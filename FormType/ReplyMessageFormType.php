@@ -4,7 +4,9 @@ namespace FOS\MessageBundle\FormType;
 
 use FOS\MessageBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -21,7 +23,11 @@ class ReplyMessageFormType extends AbstractType
             ->add('body', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextareaType'), array(
                 'label' => 'body',
                 'translation_domain' => 'FOSMessageBundle',
-            ));
+            ))
+            ->add('submit', SubmitType::class, [
+                'label' => 'sendAction'
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

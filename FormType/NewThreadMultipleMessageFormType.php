@@ -4,6 +4,7 @@ namespace FOS\MessageBundle\FormType;
 
 use FOS\MessageBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -27,7 +28,11 @@ class NewThreadMultipleMessageFormType extends AbstractType
             ->add('body', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextareaType'), array(
                 'label' => 'body',
                 'translation_domain' => 'FOSMessageBundle',
-            ));
+            ))
+            ->add('submit', SubmitType::class, [
+                'label' => 'sendAction'
+            ])
+        ;
     }
 
     /**

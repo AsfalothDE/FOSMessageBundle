@@ -18,6 +18,7 @@
             <argument>%fos_message.new_thread_form.name%</argument>
             <argument>%fos_message.new_thread_form.model%</argument>
         </service>
+        <service id="FOS\MessageBundle\FormFactory\NewThreadMessageFormFactory" alias="fos_message.new_thread_form.factory.default" public="false"/>
 
         <service id="fos_message.reply_form.factory.default" class="FOS\MessageBundle\FormFactory\ReplyMessageFormFactory" public="false">
             <argument type="service" id="form.factory" />
@@ -25,13 +26,15 @@
             <argument>%fos_message.reply_form.name%</argument>
             <argument>%fos_message.reply_form.model%</argument>
         </service>
+        <service id="FOS\MessageBundle\FormFactory\ReplyMessageFormFactory" alias="fos_message.reply_form.factory.default" public="false"/>
 
-        <service id="fos_message.new_thread_form.handler.default" class="FOS\MessageBundle\FormHandler\NewThreadMessageFormHandler" public="false">
+        <service id="fos_message.new_thread_form.handler.default" class="FOS\MessageBundle\FormHandler\NewThreadMessageFormHandler">
             <argument type="service" id="request_stack" />
             <argument type="service" id="fos_message.composer" />
             <argument type="service" id="fos_message.sender" />
             <argument type="service" id="fos_message.participant_provider" />
         </service>
+        <service id="FOS\MessageBundle\FormHandler\NewThreadMessageFormHandler" alias="fos_message.new_thread_form.handler.default" public="false"/>
 
         <service id="fos_message.new_thread_multiple_form.handler" class="FOS\MessageBundle\FormHandler\NewThreadMultipleMessageFormHandler" public="false">
             <argument type="service" id="request_stack" />
@@ -46,6 +49,7 @@
             <argument type="service" id="fos_message.sender" />
             <argument type="service" id="fos_message.participant_provider" />
         </service>
+        <service id="FOS\MessageBundle\FormHandler\ReplyMessageFormHandler" alias="fos_message.reply_form.handler.default" public="false"/>
 
         <service id="fos_message.recipients_data_transformer" class="FOS\MessageBundle\DataTransformer\RecipientsDataTransformer"  public="false">
             <argument type="service" id="fos_user.user_to_username_transformer" />

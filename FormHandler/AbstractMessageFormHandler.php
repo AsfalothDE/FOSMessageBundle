@@ -9,6 +9,7 @@ use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\MessageBundle\Security\ParticipantProviderInterface;
 use FOS\MessageBundle\Sender\SenderInterface;
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -47,11 +48,11 @@ abstract class AbstractMessageFormHandler
     /**
      * Processes the form with the request.
      *
-     * @param Form $form
+     * @param FormInterface $form
      *
      * @return MessageInterface|false the sent message if the form is bound and valid, false otherwise
      */
-    public function process(Form $form)
+    public function process(FormInterface $form)
     {
         $request = $this->getCurrentRequest();
 
@@ -71,11 +72,11 @@ abstract class AbstractMessageFormHandler
     /**
      * Processes the valid form, sends the message.
      *
-     * @param Form $form
+     * @param FormInterface $form
      *
      * @return MessageInterface the sent message
      */
-    public function processValidForm(Form $form)
+    public function processValidForm(FormInterface $form)
     {
         $message = $this->composeMessage($form->getData());
         $this->sender->send($message);

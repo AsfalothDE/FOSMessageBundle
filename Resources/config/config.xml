@@ -7,10 +7,21 @@
     <services>
 
         <service id="FOS\MessageBundle\Controller\MessageController" public="true">
-            <bind key="$container"
-                type="service"
-                id="service_container"
-            />
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface"/>
+            </call>
+            <call method="setProvider">
+                <argument type="service" id="fos_message.provider.default"/>
+            </call>
+            <tag name="container.service_subscriber"/>
+            <argument type="service" id="fos_message.reply_form.factory.default"/>
+            <argument type="service" id="fos_message.reply_form.handler.default"/>
+            <argument type="service" id="fos_message.new_thread_form.factory.default"/>
+            <argument type="service" id="fos_message.new_thread_form.handler.default"/>
+            <argument type="service" id="fos_message.deleter.default"/>
+            <argument type="service" id="fos_message.thread_manager.default"/>
+            <argument type="service" id="fos_message.search_query_factory.default"/>
+            <argument type="service" id="fos_message.search_finder.default"/>
         </service>
 
         <service id="fos_message.sender.default" class="FOS\MessageBundle\Sender\Sender" public="false">

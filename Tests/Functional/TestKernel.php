@@ -58,9 +58,6 @@ class TestKernel extends Kernel
             'secret' => 'MySecretKey',
             'test' => null,
             'form' => null,
-            'templating' => array(
-                'engines' => array('twig'),
-            ),
         ));
 
         $c->loadFromExtension('security', array(
