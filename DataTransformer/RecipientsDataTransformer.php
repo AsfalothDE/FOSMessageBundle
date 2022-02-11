@@ -16,10 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class RecipientsDataTransformer implements DataTransformerInterface
 {
-    /**
-     * @var DataTransformerInterface
-     */
-    private $userToUsernameTransformer;
+    private DataTransformerInterface $userToUsernameTransformer;
 
     public function __construct(DataTransformerInterface $userToUsernameTransformer)
     {

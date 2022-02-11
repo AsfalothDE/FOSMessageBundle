@@ -5,6 +5,7 @@ namespace FOS\MessageBundle\FormType;
 use FOS\MessageBundle\DataTransformer\RecipientsDataTransformer;
 use FOS\MessageBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,10 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class RecipientsType extends AbstractType
 {
-    /**
-     * @var RecipientsDataTransformer
-     */
-    private $recipientsTransformer;
+    private RecipientsDataTransformer $recipientsTransformer;
 
     /**
      * @param RecipientsDataTransformer $transformer
@@ -47,7 +45,7 @@ class RecipientsType extends AbstractType
         ));
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $this->configureOptions($resolver);
     }
@@ -55,7 +53,7 @@ class RecipientsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'recipients_selector';
     }
@@ -63,9 +61,9 @@ class RecipientsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): ?string
     {
-        return LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType');
+        return LegacyFormHelper::getType(TextType::class);
     }
 
     /**

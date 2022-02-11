@@ -29,7 +29,7 @@ class MessageExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return array(
             new TwigFunction('fos_message_is_read', array($this, 'isRead')),

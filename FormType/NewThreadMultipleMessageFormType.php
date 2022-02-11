@@ -5,6 +5,8 @@ namespace FOS\MessageBundle\FormType;
 use FOS\MessageBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -17,15 +19,15 @@ class NewThreadMultipleMessageFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('recipients', LegacyFormHelper::getType('FOS\MessageBundle\FormType\RecipientsType'), array(
+            ->add('recipients', LegacyFormHelper::getType(RecipientsType::class), array(
                 'label' => 'recipients',
                 'translation_domain' => 'FOSMessageBundle',
             ))
-            ->add('subject', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array(
+            ->add('subject', LegacyFormHelper::getType(TextType::class), array(
                 'label' => 'subject',
                 'translation_domain' => 'FOSMessageBundle',
             ))
-            ->add('body', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextareaType'), array(
+            ->add('body', LegacyFormHelper::getType(TextareaType::class), array(
                 'label' => 'body',
                 'translation_domain' => 'FOSMessageBundle',
             ))
@@ -38,7 +40,7 @@ class NewThreadMultipleMessageFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'fos_message_new_multiperson_thread';
     }

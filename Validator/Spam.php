@@ -8,7 +8,7 @@ class Spam extends Constraint
 {
     public $message = 'fos_user.body.spam';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'fos_message.validator.spam';
     }

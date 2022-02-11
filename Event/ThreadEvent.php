@@ -7,10 +7,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class ThreadEvent extends Event
 {
-    /**
-     * @var ThreadInterface
-     */
-    private $thread;
+    private ThreadInterface $thread;
 
     public function __construct(ThreadInterface $thread)
     {

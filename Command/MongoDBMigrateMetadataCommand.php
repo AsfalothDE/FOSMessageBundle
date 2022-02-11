@@ -2,7 +2,7 @@
 
 namespace FOS\MessageBundle\Command;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use FOS\MessageBundle\Document\Message;
 use FOS\MessageBundle\Document\Thread;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

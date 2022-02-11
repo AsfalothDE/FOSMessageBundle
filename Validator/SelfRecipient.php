@@ -8,7 +8,7 @@ class SelfRecipient extends Constraint
 {
     public $message = 'fos_message.self_recipient';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'fos_message.validator.self_recipient';
     }

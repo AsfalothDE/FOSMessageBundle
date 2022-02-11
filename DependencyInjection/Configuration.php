@@ -10,14 +10,14 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    const ROOT_NAME = 'fos_message';
+    public const ROOT_NAME = 'fos_message';
 
     /**
      * Generates the configuration tree.
      *
      * @return TreeBuilder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder(self::ROOT_NAME);
         if (\method_exists($treeBuilder, 'getRootNode')) {

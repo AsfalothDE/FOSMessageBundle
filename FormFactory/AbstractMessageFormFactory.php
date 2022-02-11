@@ -46,7 +46,7 @@ abstract class AbstractMessageFormFactory
         if (!is_string($formType) && !$formType instanceof AbstractType) {
             throw new \InvalidArgumentException(sprintf(
                 'Form type provided is not valid (class name or instance of %s expected, %s given)',
-                'Symfony\Component\Form\AbstractType',
+                AbstractType::class,
                 is_object($formType) ? get_class($formType) : gettype($formType)
             ));
         }

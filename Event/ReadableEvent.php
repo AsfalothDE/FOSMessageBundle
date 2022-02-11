@@ -7,10 +7,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 class ReadableEvent extends Event
 {
-    /**
-     * @var ReadableInterface
-     */
-    private $readable;
+    private ReadableInterface $readable;
 
     public function __construct(ReadableInterface $readable)
     {
