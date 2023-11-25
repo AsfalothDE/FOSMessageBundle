@@ -10,6 +10,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+    const ROOT_NAME = 'fos_message';
+
     /**
      * Generates the configuration tree.
      *
@@ -17,10 +19,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('fos_message');
-        $rootNode = $treeBuilder->root('fos_message');
+        $treeBuilder = new TreeBuilder(self::ROOT_NAME);
+        if (\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root(self::ROOT_NAME);
+        }
 
-        $rootNode
+        $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('db_driver')->cannotBeOverwritten()->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('thread_class')->isRequired()->cannotBeEmpty()->end()
@@ -41,8 +47,8 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('search')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('query_factory')->defaultValue('fos_message.search_query_factory.default')->cannotBeEmpty()->end()
-                        ->scalarNode('finder')->defaultValue('fos_message.search_finder.default')->cannotBeEmpty()->end()
+                        ->scalarNode('query_factory')->defaultValue('fos_message.search.query_factory.default')->cannotBeEmpty()->end()
+                        ->scalarNode('finder')->defaultValue('fos_message.search.finder.default')->cannotBeEmpty()->end()
                         ->scalarNode('query_parameter')->defaultValue('q')->cannotBeEmpty()->end()
                     ->end()
                 ->end()

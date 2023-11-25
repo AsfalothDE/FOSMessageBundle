@@ -1,9 +1,11 @@
 composer.lock
 phpunit.xml
 .phpunit
+.phpunit.*
 vendor
 .php_cs.cache
 .php_cs
 Tests/Functional/cache
 Tests/Functional/logs
 var
+.phpunit.result.cache
